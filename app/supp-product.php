@@ -17,3 +17,13 @@ if ($token !== $_SESSION['token']) {
     exit();
 }
 
+try {
+    $sqlDeleteOffer = 'DELETE FROM product WHERE product_id = :product_id';
+    $reqDeleteOffer = $db->prepare($sqlDeleteOffer);
+    $reqDeleteOffer->bindValue(':product_id', $product_id, PDO::PARAM_STR);
+    $reqDeleteOffer->execute();
+
+    header('Location:index.php?success=deleteSuccess');
+} catch (\PDOException $e) {
+    echo 'Erreur :'.$e->getMessage();
+}
