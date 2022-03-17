@@ -7,8 +7,9 @@
         header('Location:sign-in.php?error=missingInput');
         exit();
     } else {
-        $username = trim(htmlspecialchars($_POST['username']));
+        $username = trim(htmlspecialchars($_POST['username'])); 
         $password = trim(htmlspecialchars($_POST['password']));
+        // verif taper formulaire
     }
 
     if(strlen($username) < 3){
@@ -21,6 +22,7 @@
         $reqSearchUser = $db->prepare($sqlSearchUser);
         $reqSearchUser->bindValue(':username', $username, PDO::PARAM_STR);
         $reqSearchUser->execute();
+        // voir si marche avec les info taper
 
         $user = $reqSearchUser->fetch(); #Récupère un seul élément
     } catch(PDOException $e) {
@@ -39,5 +41,6 @@
             $_SESSION['token'] = md5(uniqid('csrf', true));
             header('Location:index.php');
             exit();
+            // lancer la session utilisateur
         }
     }

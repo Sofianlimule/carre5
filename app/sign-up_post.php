@@ -50,13 +50,14 @@ if ($password !== $password2) {
 }
 
 //! Fin des vérifications, insertion dans la BDD
-$password = password_hash($password, PASSWORD_DEFAULT);
+$password = password_hash($password, PASSWORD_DEFAULT); //crypte mdp dans la base de donne
 
 try {
     $sqlInsert = 'INSERT INTO user (username,password) VALUES (:username,:password)';
     $reqInsert = $db->prepare($sqlInsert);
     $reqInsert->bindValue(':username', $username, PDO::PARAM_STR);
     $reqInsert->bindValue(':password', $password, PDO::PARAM_STR);
+    // creer l'utilisateur 
 
     $resultInsert = $reqInsert->execute();
 } catch (PDOException $e) {
@@ -67,7 +68,7 @@ if ($resultInsert) {
     echo 'Vous êtes bien inscrits';
     header("Location:index.php");
     exit();
-
+    //pour m'indiquer que je suis inscrit 
 } else {
     echo 'Une erreur est survenue';
     exit();

@@ -16,7 +16,7 @@
         if (!empty($_SESSION)) {
     ?>
             <li class="nav-item">
-                <a class="nav-link  active" href="add-products.php">
+                <a class="nav-link  active" href="add-product.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -54,7 +54,7 @@
 
 if (!empty($_SESSION)) {
     ?>
-                <a class="nav-link  " href="profile.php">
+                <a class="nav-link  " href="profils.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
